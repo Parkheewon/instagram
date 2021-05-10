@@ -11,10 +11,9 @@ import UIKit
 class LoginViewController: UIViewController {
     
     struct Constants {
-        static let cornerRadius :  CGFloat = 8.0
+        static let cornerRadius : CGFloat = 8.0
     }
     
-
     private let userNmaeEmailField: UITextField = {
         let field = UITextField()
         field.placeholder = "Username or Email"
@@ -28,7 +27,6 @@ class LoginViewController: UIViewController {
         field.backgroundColor = .secondarySystemBackground
         field.layer.borderWidth = 1.0
         field.layer.borderColor = UIColor.secondaryLabel.cgColor
-        
         return field
     }()
     
@@ -92,10 +90,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpOutside)
-        createAccountButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpOutside)
-        termsButton.addTarget(self, action: #selector(didTapTermsButton), for: .touchUpOutside)
-        privacyButton.addTarget(self, action: #selector(didTapPrivacyButton), for: .touchUpOutside)
+        loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+        createAccountButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
+        termsButton.addTarget(self, action: #selector(didTapTermsButton), for: .touchUpInside)
+        privacyButton.addTarget(self, action: #selector(didTapPrivacyButton), for: .touchUpInside)
         
         userNmaeEmailField.delegate = self
         passwordField.delegate = self
@@ -189,6 +187,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didTapLoginButton() {
+        print("didtap login Button")
         passwordField.resignFirstResponder()
         userNmaeEmailField.resignFirstResponder()
         
@@ -251,11 +250,9 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didTapCreateAccountButton() {
-        
         let vc = RegistrationViewController()
         vc.title = "Create Account"
         present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
-        
     }
 }
 
@@ -271,4 +268,5 @@ extension LoginViewController: UITextFieldDelegate {
         
         return true
     }
+    
 }
